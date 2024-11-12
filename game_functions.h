@@ -13,13 +13,9 @@ void main_function();
 
 void create_player(Player* player, const char* name, Character char_class);
 
-void generateEnemy(EnemyType enemy_kind);
+void generateEnemy(EnemyType enemy_kind, Enemy* enemy);
 
-void battle(Player* player, Enemy* enemy);
-
-void print_player_info(const Player* player);
-
-void print_enemy_info(const Enemy* enemy);
+int32_t battle(Player* player, Enemy* enemy, EnemyType e_class, int32_t difficulty, int32_t* total_points, int32_t* round);
 
 void progress_bar();
 
