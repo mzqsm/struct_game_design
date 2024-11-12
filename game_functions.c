@@ -80,11 +80,11 @@ void main_function()
 
 	printf("Game Start !\n");
 
-	Enemy* enemy;
+	Enemy enemy;
 
 	srand(time(NULL));//initial, only need once. can't put in loop.
 
-	enemy->E_level = 1;
+	int32_t new_level = 1;
 
 	while (true)
 	{
@@ -93,11 +93,11 @@ void main_function()
 
 		switch (difficulty)
 		{
-		case 1: generateEnemy(E_class, enemy);
+		case 1: generateEnemy(E_class, &enemy, &new_level);
 			break;
-		case 2: generateEnemy(E_class, enemy);
+		case 2: generateEnemy(E_class, &enemy, &new_level);
 			break;
-		case 3: generateEnemy(E_class, enemy);
+		case 3: generateEnemy(E_class, &enemy, &new_level);
 			break;
 		default:
 			break;
@@ -196,11 +196,13 @@ void create_player(Player* player, const char* P_name, Character char_class)
 	printf("Crits-rate : %d%%\n", player->P_abilities.crits_rate);
 	printf("Crits-degree : %d\n", player->P_abilities.crits_degree);
 }
-void generateEnemy(EnemyType enemy_kind, Enemy* enemy)
+void generateEnemy(EnemyType enemy_kind, Enemy* enemy, int32_t* new_level)
 {
 	char E_race[3][10] = { "Goblin", "Troll", "Dragon" };
 
-	
+	enemy->E_level = *new_level;
+
+	(*new_level)++;
 	// 以后的伏笔，需要注意，以后可能会进行删改！！！
 
 	switch (enemy_kind)
